@@ -59,11 +59,11 @@
                 </div>
             </div>
 
-            <div class="mt-4 grid grid-cols-2 gap-y-5 sm:grid-cols-3 gap-x-5 ">
+            <ul class="mt-4 grid grid-cols-2 gap-y-5 sm:grid-cols-3 gap-x-5 ">
                 {% include 'parts/movie_card_homepage.html.twig' %}
                 {% include 'parts/movie_card_homepage.html.twig' %}
                 {% include 'parts/movie_card_homepage.html.twig' %}
-            </div>
+            </ul>
         </section>
 
         <section class="mt-9">
@@ -72,20 +72,9 @@
             </div>
 
             <div class="mt-4 grid grid-cols-2 gap-y-5 sm:grid-cols-3 gap-x-5">
-                {% include 'parts/card_category.html.twig' %}
-                {% include 'parts/card_category.html.twig' %}
-                {% include 'parts/card_category.html.twig' %}
-                {% include 'parts/card_category.html.twig' %}
-                {% include 'parts/card_category.html.twig' %}
-                {% include 'parts/card_category.html.twig' %}
-                {% include 'parts/card_category.html.twig' %}
-                {% include 'parts/card_category.html.twig' %}
-                {% include 'parts/card_category.html.twig' %}
-                {% include 'parts/card_category.html.twig' %}
-                {% include 'parts/card_category.html.twig' %}
-                {% include 'parts/card_category.html.twig' %}
-                {% include 'parts/card_category.html.twig' %}
-
+                {% for category in categories %}
+                    {% include 'parts/card_category.html.twig' %}
+                {% endfor %}
             </div>
         </section>
 

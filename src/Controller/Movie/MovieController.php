@@ -10,10 +10,14 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class MovieController extends AbstractController
 {
-    #[Route('/movie', name: 'movie')]
-    public function movie(): Response
+    #[Route('/movie/{id}', name: 'show_movie')]
+    public function movie(
+        Movie $movie
+    ): Response
     {
-        return $this->render('movie/detail.html.twig');
+        return $this->render('movie/detail.html.twig', [
+            'movie' => $movie
+        ]);
     }
 
     #[Route('/serie', name: 'serie')]
