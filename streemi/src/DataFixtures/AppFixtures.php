@@ -10,11 +10,13 @@ use App\Entity\Media;
 use App\Entity\Movie;
 use App\Entity\Playlist;
 use App\Entity\PlaylistMedia;
+use App\Entity\PlaylistSubscription;
 use App\Entity\Season;
 use App\Entity\Serie;
 use App\Entity\Subscription;
 use App\Entity\SubscriptionHistory;
 use App\Entity\User;
+use App\Entity\WatchHistory;
 use App\Enum\CommentStatusEnum;
 use App\Enum\UserAccountStatusEnum;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -38,6 +40,8 @@ class AppFixtures extends Fixture
         $playlists = $this->createPlaylists($manager, $users, $medias);
         $this->createSubscriptionHistories($manager, $users, $subscriptions);
         $this->createComments($manager, $users, $medias);
+        $this->createPlaylistSubscriptions($manager, $users, $playlists);
+        $this->createWatchHistories($manager, $users, $medias);
 
         $manager->flush();
     }
@@ -211,6 +215,35 @@ class AppFixtures extends Fixture
         }
 
         return $playlists;
+    }
+
+    private function createPlaylistSubscriptions(ObjectManager $manager, array $users, array $playlists): void
+    {
+        foreach ($users as $user) {
+            for ($i = 1; $i <= random_int(1, 3); $i++) {
+                $playlistSubscription = new PlaylistSubscription();
+                $playlistSubscription->setSubscriber($user)
+                    ->setPlaylist($playlists[array_rand($playlists)])
+                    ->setSubscribedAt(new DateTimeImmutable());
+
+                $manager->persist($playlistSubscription);
+            }
+        }
+    }
+
+    private function createWatchHistories(ObjectManager $manager, array $users, array $medias): void
+    {
+        foreach ($users as $user) {
+            for ($i = 1; $i <= random_int(1, 5); $i++) {
+                $watchHistory = new WatchHistory();
+                $watchHistory->setMedia($medias[array_rand($medias)])
+                    ->setWatcher($user)
+                    ->setLastWatched(new DateTimeImmutable())
+                    ->setNumberOfViews(random_int(1, 10));
+
+                $manager->persist($watchHistory);
+            }
+        }
     }
 
     private function createSubscriptionHistories(ObjectManager $manager, array $users, array $subscriptions): void

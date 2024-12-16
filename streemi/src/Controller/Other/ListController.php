@@ -34,7 +34,7 @@ class ListController extends AbstractController
         }
 
         $playlists = $playlistRepository->findAll();
-        $subscribedPlaylists = $playlistSubscriptionRepository->findAll();
+        $subscribedPlaylists = $playlistSubscriptionRepository->findBy(['subscriber' => $user]);
 
         return $this->render('other/lists.html.twig', [
             'playlists' => $playlists,

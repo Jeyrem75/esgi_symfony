@@ -22,12 +22,12 @@
                     </button>
                 </div>
                 <div class="relative w-full flex text-gray-700 font-medium">
-                    <select class="appearance-none w-full bg-white border border-gray-200 px-7 py-3 rounded-md shadow transition">
+                    <select id="choosePlaylistSelect" class="appearance-none w-full bg-white border border-gray-200 px-7 py-3 rounded-md shadow transition">
                         {% for playlist in app.user.playlists %}
                             <option value="{{ playlist.id }}">#{{ loop.index }} - {{ playlist.name }} ({{ playlist.allMoviePlaylistMedia | length }} films & {{ playlist.allSeriePlaylistMedia | length }} séries)</option>
                         {% endfor %}
                         {% for subscribedPlaylist in subscribedPlaylists %}
-                            <option value="{{ subscribedPlaylist.playlist.id }}">#{{ loop.index }} - {{ subscribedPlaylist.playlist.name }} ({{ subscribedPlaylist.playlist.allMoviePlaylistMedia | length }} films & {{ subscribedPlaylist.playlist.allSeriePlaylistMedia | length }} séries) - Liste de {{ subscribedPlaylist.playlist.creator.username }}</option>
+                            <option value="{{ subscribedPlaylist.playlist.id }}">#{{ loop.index }} - {{ subscribedPlaylist.playlist.name }} ({{ subscribedPlaylist.playlist.allMoviePlaylistMedia | length }} films & {{ subscribedPlaylist.playlist.allSeriePlaylistMedia | length }} séries) - Liste de {{ subscribedPlaylist.playlist.createdBy.username }}</option>
                         {% endfor %}
                     </select>
                     <div class="pointer-events-none absolute right-2 inset-y-0 flex items-center px-2">
