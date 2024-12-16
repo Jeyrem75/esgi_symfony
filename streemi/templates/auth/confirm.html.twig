@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streemi - Confirmation du compte</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-montserrat text-sm bg-white">
+    <div class="flex min-h-screen">
+        {% include 'parts/menu-left.html.twig' %}
+        <main class="flex-1">
+            <section class="h-full relative">
+                <div style="background-image: url('https://blog.compose.fr/wp-content/uploads/2024/05/Marathon-Cinema.webp')" class="bg-cover bg-no-repeat h-full before:bg-black/40 before:content-[''] before:top-0 before:left-0 before:right-0 before:absolute before:w-full before:h-full">
+                    <div class="p-8 lg:w-1/2 mx-auto h-full flex items-center justify-center">
+                        <div class="bg-white rounded-lg p-8 relative w-full">
+                            <h1 class="text-center text-lg font-bold">Confirmation du compte</h1>
+                            <div class="flex items-center font-medium mt-8 bg-green-100 border border-black/10 rounded-lg px-8 py-4">
+                                Votre compte à bien été confirmé. Vous pouvez désormais vous connecter avec vos identifiants.
+                            </div>
+                            <div class="flex items-center justify-center mt-8">
+                                <a class="text-red-600 cursor-pointer transition hover:text-red-700 hover:scale-105">
+                                    Vous pouvez vous connecter ici
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
